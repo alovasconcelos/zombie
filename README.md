@@ -1,3 +1,3 @@
 "# zombie" 
 
-This is the first game I wrote, using the Go language and Ebiten.
+First game I wrote using the Go programming language and Ebiten.
