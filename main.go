@@ -77,10 +77,8 @@ var (
 	tempoJogo int
 )
 
-func start() {
-
-	// nível
-	level = 1
+func init() {
+	ebiten.SetWindowDecorated(false)
 
 	// logo
 	logo, _ = initializeImage("assets/logo.png")
@@ -121,13 +119,8 @@ func start() {
 	// Useless Bytes logo
 	ubLogo, _ = initializeImage("assets/ublogo.png")
 
-	lastFrameUpdate = time.Now()
-
-	tempoJogo = 35
-
 	scor = score{}
 	scor.sprite, _ = initializeImage("assets/Head.png")
-	scor.lives = 3
 
 	zombiePlayer = player{
 		speed:   .5,
@@ -193,11 +186,7 @@ func start() {
 	soundtrack.audioPlayer.SetVolume(.3)
 	soundtrack.playMP3()
 
-}
-
-func init() {
-	ebiten.SetWindowDecorated(false)
-	start()
+	restart()
 }
 
 func restart() {
@@ -205,6 +194,7 @@ func restart() {
 	level = 1
 
 	lastFrameUpdate = time.Now()
+	tempoJogo = 35
 
 	zombiePlayer.sc.lives = 3
 	zombiePlayer.sc.gameOver = false
